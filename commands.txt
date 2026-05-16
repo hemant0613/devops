@@ -1,0 +1,409 @@
+    1  sudo dnf install -y openssh-server
+    2  su -
+    3  exit
+    4  su -
+    5  sudo dnf update -y
+    6  reboot
+    7  sudo reboot
+    8  su -
+    9  cd var
+   10  ls
+   11  su -
+   12  hostname -i
+   13  ngrok https 8080
+   14  ngrok http 8080
+   15  su -
+   16  ssh root@node2
+   17  su -u
+   18  su -
+   19  ls
+   20  cd /devops/ansible
+   21  cd devops
+   22  ls
+   23  cd ansible
+   24  ssh-keygen
+   25  ssh-copy-id devops@node1
+   26  ssh -devops
+   27  ssh -devops@node1
+   28  ssh devops@node1
+   29  ssh devops@node2
+   30  ssh-copy-id devops@node2
+   31  ssh devops@node2
+   32  ssh root@node2
+   33  ssh root@node1
+   34  cat ansible.cfg
+   35  cd devops
+   36  cd
+   37  cd devops
+   38  cd ansible
+   39  cat ansible.cfg
+   40  nano ansible.cfg
+   41  cat ansible.cfg
+   42  ansible node1 -m command -a id 
+   43  ansible servers -m command -a uptime
+   44  ansible servers -m command -a 'df -h'
+   45  ansible servers -m user -a 'name=yy1 state=present'
+   46  ansible servers -m user -a 'name=yy1 state=absent'
+   47  ansible servers -m user -a 'name=yy1 state=present'
+   48  ip addr
+   49  clear
+   50  cd ansible
+   51  cat 1.playbook-intro.yml
+   52  ansible 1.playbook-intro.yml 
+   53  ansible-playbook 1.playbook-intro.yml 
+   54  '/home/student/devops/ansible/3.Installwebserver.yml'
+   55  cd ansible/
+   56  ansible-playbook 3.Installwebserver.yml 
+   57  yes
+   58  ansible-playbook 3.Installwebserver.yml 
+   59  ansible-playbook 4.installmariadb.yml
+   60  ansible-playbook 4.Installmariadb.yml
+   61  ansible-playbook varplaybook,yml
+   62  ansible-playbook varplaybook.yml
+   63  ls
+   64  ansible-playbook varplaybook.yml
+   65  ansible-playbook 7.installapp-variables.yml 
+   66  ansible-playbook 8.diskreport-var.yml 
+   67  ansible-playbook 9.installapp-varfiles.yml 
+   68  ansible-playbook 10.loop-user.yml 
+   69  cd ansible/
+   70  ansible-vault create dbsecret.txt
+   71  sh node2@devops
+   72  su -
+   73  ls
+   74  cd ansible/
+   75  ls
+   76  ansible plabook 16.deploycontainer.yml. 
+   77  ansible-plabook 16.deploycontainer.yml. 
+   78  ansible-playbook 16.deploycontainer.yml. 
+   79  history
+   80  ansible-galaxy collection install community.docker
+   81  ansible-playbook 16.deploycontainer.yml. 
+   82  cd ..
+   83  cd
+   84  ls
+   85  cd devops/K8s/
+   86  ls
+   87  cdmod +x 0.installk8s.sh 
+   88  chmod +x 0.installk8s.sh 
+   89  ls -l
+   90  su
+   91  su -
+   92  ls -l
+   93  kubectl get pods
+   94  kubectl run pod1 --image=nginx
+   95  kubectl get pods
+   96  kubectl describe pod pod1
+   97  kubectl get pod -o wide
+   98  kubectl run pod2 --image=nginx
+   99  kubectl get pods
+  100  kubectl get pod -o wide
+  101  kubectl delete pods --all
+  102  kubectl run pod1 --image=nginxdemos/hello --port=80 --labels="app=ordering,env=prod"
+  103  kubectl run pod1 --image=nginxdemos/hello --port=80 --labels="app=ordering,env=dev"
+  104  kubectl run pod2 --image=nginxdemos/hello --port=80 --labels="app=ordering,env=dev"
+  105  kubectl run pod3 --image=nginxdemos/hello --port=80 --labels="app=ordering,env=test"
+  106  kubectl get pods -o wide
+  107  kubectl get pods -l env=dev
+  108  kubectl get pods -l env=prod
+  109  kubectl get pods -l app=ordering
+  110  kubectl create -f 2.pod.yaml 
+  111  pwd
+  112  cd K8s/
+  113  kubectl create -f 2.pod.yaml 
+  114  kubectl get pods -o wide
+  115  kubectl create -f 3.podmanifest.yaaml 
+  116  kubectl get pods -o wide
+  117  kubectl create -f 4.Daemon.yml 
+  118  kubectl get pods -o wide
+  119  cd K8s/
+  120  kubectl apply -f 5.deployment.yml 
+  121  kubectl get deploy
+  122  kubectl get rs
+  123  kubectl get pods
+  124  kubectl apply -f 5.deployment.yml 
+  125  kubectl get pods
+  126  kubectl get rs
+  127  kubectl describe deployment nginx-deployment
+  128  kubectl apply -f 7.service-deploy.yml 
+  129  kubectl get pods
+  130  kubectl get service
+  131  kubectl apply -f 7.service-deploy.yml 
+  132  kubectl get service
+  133  kubectl get pods
+  134  kubectl delete pod --all
+  135  kubectl get pods
+  136  kubectl delete pod --all
+  137  kubectl get pods
+  138  cd k
+  139  cd K8s/
+  140  ls
+  141  kubectl apply 
+  142  kubectl apply -f 11.1\ pv.yml 
+  143  kubectl apply -f 11.2\ pvc.yml 
+  144  kubectl apply -f 11.3\ pv-pvc\ pod.yml 
+  145  kubectl get pods
+  146  kubectl get pod,pv,pvc
+  147  kubectl get pod -o wide
+  148  cd
+  149  cd devops/K8s/
+  150  helm
+  151  heml create p1
+  152  cd..
+  153  cd ..
+  154  cd ansible/
+  155  cd ..
+  156  ls
+  157  cd K
+  158  cd K8s/
+  159  cd linux-amd64/
+  160  helm create p1
+  161  tree p1
+  162  cd K8s/
+  163  ls
+  164  kubectl apply -f dynpvcdeploy.yml 
+  165  kubectl get pods
+  166  kubectl get pod -o wide
+  167  kubectl get pod,pv,pvc
+  168  kubectl get pods
+  169  kubectl delete deployment nginx-deployment
+  170  kubectl get pods
+  171  clear
+  172  wget  http://10.0.15.1/labs/k8s/helm-v4.1.4.tar.gz
+  173  tar -zxvf helm-v4.1.4.tar.gz
+  174  mv linux-amd64/helm /usr/local/bin/helm
+  175  su -
+  176  ls
+  177  pwd
+  178  cd root
+  179  l
+  180  ls
+  181  cd
+  182  ls
+  183  cd devops/
+  184  ls
+  185  cd K
+  186  cd K8s/
+  187  ls
+  188  mv linux-amd64/helm /usr/local/bin/helm
+  189  cd /usr/local/bin
+  190  ls
+  191  mkdir helm
+  192  cd
+  193  cd devops/K8s/
+  194  helm
+  195  su -
+  196  cd MOnitoring/
+  197  kubectl get pods -n monitoring
+  198  kubectl get pods -n monitoring -o wode
+  199  kubectl get pods -o wide
+  200  kubectl get pods -n monitoring 
+  201  kubectl delete pod nginx 
+  202  kubectl delete pod nginx2
+  203  kubectl delete pod task-pv-pvc-pod
+  204  kubectl get pods -o wide
+  205  kubectl get pods -n monitoring -o wide
+  206  kubectl logs monitoring-prometheus-node-exporter-7bp66 -n monitoring
+  207  kubectl get pods -n monitoring 
+  208  kubectl get pods -n monitoring -o wide
+  209  kubectl get pods -n monitoring
+  210  kubectl run cpu-stress --image=polinux/stress --restart=Never -- stress --cpu 2 --timeout 120
+  211  kubectl run cpu-stress2 --image=polinux/stress --restart=Never -- stress --cpu 2 --timeout 120
+  212  kubectl delete pod cpu-stress
+  213  helm uninstall monitoring -n monitoring
+  214  kubectl delete namespace monitoring
+  215  kubectl get pods -n monitoring
+  216  kubectl get pods 
+  217  kubectl delete pod cpu-stress2
+  218  kubectl get pods -n monitoring
+  219  kubectl get pods 
+  220  wget http://10.0.15.1/labs/monitoring/prometheus-3.11.3.linux-amd64.tar.gz
+  221  tar xvfz prometheus-*.tar.gz
+  222  cd prometheus-3.11.3.linux-amd64/
+  223  nano prometheus.yml 
+  224  ls -lh
+  225  ./prometheus 
+  226  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  227  cd ..
+  228  cd MOnitoring/
+  229  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  230  help repo update
+  231  helm repo update
+  232  kubectl create namespace monitoring
+  233  helm install monitoring prometheus-community/kube-prometheus-stack --namespace monitoring
+  234  kubectl get pods -n monitoring
+  235  kubectl get svc/monitoring-grafana -n monitoring
+  236  kubectl port-forward svc/monitoring-grafana 3000:80 -n monitoring
+  237  kubectl --namespace monitoring get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+  238  kubectl port-forward svc/monitoring-grafana 3001:80 -n monitoring
+  239  ssh root@node1
+  240  ssh root@node2
+  241  dnf install http://10.0.15.1/labs/monitoring/grafana_13.0.1_24542347077_linux_amd64.rpm
+  242  wget http://10.0.15.1/labs/monitoring/grafana_13.0.1_24542347077_linux_amd64.rpm
+  243  ls
+  244  sudo install -y grafana_13.0.1_24542347077_linux_amd64.rpm 
+  245  dnf install -y grafana-*
+  246  sudo dnf localinstall -y grafana_13.0.1_24542347077_linux_amd64.rpm
+  247  ls
+  248  sudo /bin/systemctl daemon-reload
+  249  sudo /bin/systectl enable grafana-server.services
+  250  sudo /bin/systectl enable grafana-server.service
+  251  sudo /bin/systemctl enable grafana-server.service
+  252  sudo /bin/systemctl start grafana-server.service
+  253  sudo ss -tulnp | grep 9100
+  254  sudo kill -9 228480
+  255  ssh root@node2
+  256  ssh root@node1
+  257  cd ..
+  258  wget http://10.0.15.1/labs/fullstack/
+  259  wget -r -np -nH --cut-dirs=1 http://10.0.15.1/labs/fullstack/
+  260  cd fullstack/
+  261  cd backend/
+  262  docker build dockerfile
+  263  cd ..
+  264  cd frontend/
+  265  docker build -t frontend-demo:v1
+  266  podman build -t frontend-demo:v1
+  267  pwd
+  268  ls
+  269  cd ..
+  270  cd frontend/
+  271  ls
+  272  podman build -t dockerfile:v1
+  273  podman build -t frontend-demo:v1
+  274  podman --version
+  275  docekr --version
+  276  podman build -t frontend-demo:v1 .
+  277  podman build -t frontend:v1 .
+  278  podman build -t dockerfile:v1 .
+  279  podman build -t frontend-demo:v1 -f dockerfile .
+  280  cd /backend
+  281  cd ..
+  282  cd backend/
+  283  podman build -t backend-demo:v1 -f dockerfile .
+  284  docker network create demo-network
+  285  podman  network create demo-network
+  286  podman network create demo-network
+  287  podman network ls
+  288  podman network rm podman
+  289  docker
+  290  pip install docker
+  291  sudo dnf install podman-docker
+  292  docker network create demo-network
+  293  docker network ls
+  294  podman login
+  295  docker network create demo-network
+  296  docker network create --subnet 10.10.0.0/24 demo-network
+  297  docker network create --subnet 192.168.50.0/24 demo-network
+  298  docker network ls
+  299  docker run -d --name mongodb --network demo-network mongo:7
+  300  docker run -d --name backend --network demo-network -p 3000:3000 backend-demo:v1
+  301  ss -tulnp |grep 3000
+  302  podman ps -a
+  303  podman rm backend
+  304  docker run -d --name backend --network demo-network -p 3000:3000 backend-demo:v1
+  305  podman ps -a
+  306  cd ..
+  307  docker run -d --name frontend --network demo-network -p 8080:80 frontend-demo:v1
+  308  podman ps -a
+  309  cd frontend/
+  310  docker tag frontend-demo:v1 hemantkrp/frontend-demo:v1
+  311  cd ..
+  312  cd backend/
+  313  docker tag backend-demo:v1 hemantkrp/backend-demo:v1
+  314  podman logs frontend
+  315  cd ..
+  316  cd frontend/
+  317  podman logs frontend
+  318  cd ..
+  319  ss -tulnp | grep 3000
+  320  podman rm -f backend frontend
+  321  ss -tulnp | grep 3000
+  322  ss -tulnp | grep 8080
+  323  pkill -f rootlessport
+  324  ss -tulnp | grep 8080
+  325  Sudo pkill -f rootlessport
+  326  sudo pkill -f rootlessport
+  327  ss -tulnp | grep 8080
+  328  ss -tulnp | grep 3000
+  329  sudo pkill -f rootlessport
+  330  ss -tulnp | grep 3000
+  331  ss -tulnp | grep 8080
+  332  sudo lsof -i :8080
+  333  sudo lsof -i :3000
+  334  sudo kill -9 929
+  335  ss -tulnp | grep 3000
+  336  sudo lsof -i :3000
+  337  kubectl get pods
+  338  docker run -d --name frontend --network demo-network -p 8081:80 frontend-demo:v1
+  339  docker run -d --name backend --network demo-network -p 3001:3000 backend-demo:v1
+  340  docker tag backend-demo:v1 hemantkrp/backend-demo:v1
+  341  docker tag frontend-demo:v1 hemantkrp/frontend-demo:v1
+  342  docker push hemantkrp/frontend-demo:v1
+  343  podman login docker.io
+  344  docker push hemantkrp/frontend-demo:v1
+  345  docker push hemantkrp/backend-demo:v1
+  346  cd ..
+  347  cd fullstack/k8s/
+  348  kubectl apply -f k8s/
+  349  cd ..
+  350  kubectl apply -f k8s/
+  351  cd backend/
+  352  kubectl apply -f k8s/
+  353  WORKDIR /app
+  354  kubectl get pods
+  355  podman ps -a
+  356  podman delete -all
+  357  podman delete -a
+  358  podman delete pod
+  359  podman delete rm 
+  360  cd LabAssesment/
+  361  podman run -d --name myfirstcontainer -p 8880:80 httpd
+  362  podman inspect myfirstcontainer 
+  363  podman inspect myfirstcontainer | grep -i port
+  364  podman inspect myfirstcontainer | grep -i cpu
+  365  podman pods
+  366  podman pod
+  367  docker image
+  368  docker images
+  369  podman inspect myfirstcontainer 
+  370  mkdir -p /webcontent/html
+  371  sudo mkdir -p /webcontent/html
+  372  pwd
+  373  ls
+  374  echo "<h1> My second container </h1>" > /webcontent/html/index.html
+  375  sudo echo "<h1> My second container </h1>" > /webcontent/html/index.html
+  376  sudo nano "<h1> My second container </h1>" > /webcontent/html/index.html
+  377  sudo echo "<h1> My second container </h1>" > /webcontent/html/index.html
+  378  su -
+  379  cd LabAssesment/
+  380  cd LabAssesment/kubectl apply -f simple-pod.yaml
+  381  kubectl apply -f simple-pod.yaml
+  382  kubectl apply -f simple-pod.yaml 
+  383  kubectl create namespace machinelearning
+  384  kubectl apply -f simple-pod.yaml 
+  385  kubectl get pod simple-pod-kube
+  386  kubectl get pod
+  387  kubectl get pods -n machinelearning
+  388  kubectl describe pod simple-pod-kube -n machinelearning
+  389  ansible --version
+  390  ansible-playbook -i hosts ansible_playbook.yml 
+  391  grep -i "^inventory" /etc/ansible/ansible.cfg 
+  392  cat /etc/ansible/ansible.cfg 
+  393  ansible-playbook -i locahost, -c local ansible_playbook.yml 
+  394  ansible-playbook -i hosts ansible_playbook.yml 
+  395  ansible-playbook -i ansible_playbook.yml 
+  396  ansible-playbook ansible_playbook.yml 
+  397  ansible-playbook ansible-playbook2.yml 
+  398  cat /tmp/diskreport.txt
+  399  clear
+  400  ansible-playbook ansible-playbook2.yml 
+  401  cd ..
+  402  cd ansible/
+  403  ansible-playbook ansible-playbook2.yml 
+  404  sudo echo "<h1> My second container </h1>" > /webcontent/html/index.html
+  405  su -
+  406  ssh root@node2
+  407  ssh root@node1
+  408  history
+  409  history > devops/commands.txt

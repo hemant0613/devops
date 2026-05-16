@@ -1,0 +1,31 @@
+- name: Create supportuser with sudo privilages
+  hosts: node1
+  tasks:
+      #Task 1: Create a user named supportuser with sudo privileges
+    - name: Create supportuser
+      ansible.builtin.user:
+        name: supportuser
+        state: present
+        groups: wheel
+        append: yes
+
+      #Task 2: Set a password for supportuser
+    - name: Set password for supportuser
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/supportuser
+        line: "supportuser ALL=(ALL) NOPASSWD:ALL"
+        create: yes
+        mode: '0440'
+        validate: '/usr/sbin/visudo -cf %s'
+    
+    #Task 3: Create using df -h command a file named diskreport.txt
+    - name: Create diskreport.txt
+      ansible.builtin.shell: df -h > /tmp/diskreport.txt
+      changed_when: true
+
+    #Task 4: Deploy httpd if ansibe_os_family is RedHat
+    - name: Install httpd on RedHat family
+      ansible.builtin.dnf: #use dnf module
+        name: httpd
+        state: latest
+      when: ansible_os_family == "RedHat"

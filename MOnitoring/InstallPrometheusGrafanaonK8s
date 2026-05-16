@@ -1,0 +1,69 @@
+INstall Prometheus and grafana in k8s cluster
+
+
+Kubernetes Monitoring Lab: Prometheus + Grafana
+Objective: Deploy a production-style monitoring stack in Kubernetes using the
+kube-prometheus-stack Helm chart and visualize metrics in Grafana.
+Prerequisites
+• Working Kubernetes cluster (1 master + 2 workers recommended)
+
+kubectl configured
+• Helm installed
+• Internet access to pull container images
+
+## Step 1 – Add Helm Repository
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+## Step 2 – Create Monitoring Namespace
+kubectl create namespace monitoring
+
+## Step 3 – Install kube-prometheus-stack
+helm install monitoring prometheus-community/kube-prometheus-stack --namespace monitoring
+
+## Step 4 – Verify Monitoring Pods
+
+kubectl get pods -n monitoring
+Expected Components
+• Prometheus Server
+• Grafana
+• Alertmanager
+• Node Exporter (DaemonSet)
+• kube-state-metrics
+
+## Step 5.1 – Access Grafana (clusterip)
+kubectl get svc/monitoring-grafana -n monitoring
+Open browser: http://monitoring-grafana-clusterip:80
+## or ##
+## Step 5.2 – Access Grafana (Port Forward)
+kubectl port-forward svc/monitoring-grafana 3001:80 -n monitoring
+Open browser: http://localhost:3001
+
+## Step 6 – Get Grafana Admin Password
+kubectl --namespace monitoring get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+
+## Step 7 – Verify Prometheus Metrics
+
+kubectl port-forward svc/monitoring-kube-prometheus-prometheus 9090:9090 -n monitoring
+• Open browser: http://localhost:9090
+• Test query: up
+
+## Step 8 – Generate CPU Load (Test Monitoring)
+
+kubectl run cpu-stress --image=polinux/stress --restart=Never -- stress --cpu 2 --timeout 120
+
+## Step 9 – Observe Metrics
+
+kubectl top pod
+kubectl top node
+
+• Open Grafana dashboards and observe CPU spike
+
+## Cleanup
+
+kubectl delete pod cpu-stress
+
+helm uninstall monitoring -n monitoring
+
+kubectl delete namespace monitoring
+

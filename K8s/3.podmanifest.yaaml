@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "myapp1"
+  namespace: default
+  labels:
+    app: "tracking"
+spec:
+  containers:
+  - name: myapp
+    image: "nginx"

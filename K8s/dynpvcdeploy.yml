@@ -1,0 +1,54 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass 
+metadata:
+  name: nfs-dynamic
+provisioner: example.com/nfs
+reclaimPolicy: Delete 
+volumeBindingMode: Immediate
+---
+#if you apply this pvc, it will create a pv in example.com/nfs CSI
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-dynamic
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: webdata
+  volumes:
+    - name: webdata
+      persistentVolumeClaim:
+        claimName: nginx-pvc
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx2
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: webdata
+  volumes:
+    - name: webdata
+      persistentVolumeClaim:
+        claimName: nginx-pvc

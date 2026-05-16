@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-pod-kube
+  namespace: machinelearning
+spec:
+  containers:
+    - name: web-container
+      image: nginx
+      resources:
+        limits:
+          cpu: "750m"
+          memory: "500Mi"

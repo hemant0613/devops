@@ -1,0 +1,3 @@
+wget  http://10.0.15.1/labs/k8s/helm-v4.1.4.tar.gz
+tar -zxvf helm-v4.1.4.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
